@@ -1,0 +1,45 @@
+GUI temperature.py
+
+#create two label first temperature tempreature celsis and the other temperature fahrenheit
+#make celsis turn into fahrenheit
+import tkinter
+import tkinter.messagebox
+def exit():
+    value=tkinter.messagebox.askyesno("Exit","Are you sure to exit")
+    if value:
+        tkinter.messagebox.showinfo("information","software created by Tiven")
+        screen.destroy()
+def clear():
+    E1.delete(0,20)
+    E2.delete(0,20)
+def convert():
+    celsis=E1.get()
+    celsis=float(celsis)
+    fahrenheit=(celsis*9/5)+32
+    E2.insert(0,fahrenheit)
+def convertback():
+    fahrenheit=E2.get()
+    fahrenheit=float(fahrenheit)
+    celsis=(fahrenheit-32)*5/9
+    E1.delete(0,20)
+    E1.insert(0,celsis)
+screen=tkinter.Tk()
+L1=tkinter.Label(screen,text="Celsis")
+L1.grid(row=0,column=0)
+L2=tkinter.Label(screen,text="Fahrenheit")
+L2.grid(row=1,column=0)
+E1=tkinter.Entry(screen)
+E1.grid(row=0,column=1)
+E2=tkinter.Entry(screen)
+E2.grid(row=1,column=1)
+B1=tkinter.Button(screen,text="Exit",command=exit)
+B1.grid(row=2,column=1)
+B2=tkinter.Button(screen,text="Convert Celsis",command=convert)
+B2.grid(row=2,column=2)
+B3=tkinter.Button(screen,text="Clear",command=clear)
+B3.grid(row=2,column=0)
+#add one more button,convert back,entered temperature in fahrenheit to celsis
+E3=tkinter.Entry(screen)
+B4=tkinter.Button(screen,text="Convert Fahrenheit",command=convertback)
+B4.grid(row=1,column=2)
+screen.mainloop() 
